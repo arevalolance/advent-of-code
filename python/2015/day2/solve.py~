@@ -1,0 +1,26 @@
+import fileinput
+
+def solve(l,w,h):
+    x=l*w
+    y=w*h
+    z=h*l
+    nums = [l,w,h]
+    e1 = check(nums)
+    nums.remove(e1)
+    e2 = check(nums)
+    print(l,w,h," pong ",e1,e2)
+    return e1 + e1 + e2 + e2 
+    #return extra + (2 * (l * w)) + (2*(w*h)) + (2*(h*l))
+
+def check(nums):
+    _min = nums[0]
+    for i in range(1, len(nums)):
+        if nums[i] < _min:
+            _min = nums[i]
+    return _min
+ans = 0
+for line in fileinput.input():
+    data = line.strip().split('x')
+    ans += solve(int(data[0]),int(data[1]),int(data[2]))
+
+print(ans)

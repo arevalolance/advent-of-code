@@ -33,7 +33,7 @@ for line in fileinput.input():
     ids.append(row*8+col)
 
 for x in range(min(ids), max(ids)):
-    if x not in d:
+    if x not in ids:
         print(x)
 
 print(max(ids))

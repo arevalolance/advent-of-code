@@ -1,0 +1,39 @@
+import fileinput
+
+lines = list(fileinput.input())
+
+def get():
+    ops = list()
+    for line in lines:
+        line = line.strip()
+        line = line.split(',')
+        for item in line:
+            ops.append(int(item))
+    return ops
+def solve(commands,a,b):
+    x = commands
+    x[1] = a
+    x[2] = b
+    for i in range(0,len(x)-1,4):
+        posx = x[i+1]
+        posy = x[i+2]
+        posz = x[i+3]
+
+        if x[i] == 1:
+            x[posz] = x[posx] + x[posy]
+        elif x[i] == 2:
+            x[posz] = x[posx] * x[posy]
+        elif x[i] == 99:
+            break
+        else:
+             print("oh no")
+    return x
+
+for i in range(0, 99):
+    for j in range(0, 99):
+        ops = get()
+        s = solve(ops,i,j)
+        if s[0] == 19690720:
+            print(100*i*j)
+            break
+

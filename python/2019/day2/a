@@ -1,0 +1,33 @@
+import fileinput
+
+lines = list(fileinput.input())
+
+ops = list()
+for line in lines:
+    line = line.strip()
+    line = line.split(',')
+    for item in line:
+        ops.append(int(item))
+      
+ops[1] = 12
+ops[2] = 2
+print(ops)
+for i in range(0,len(ops)):
+    if ops[i] == 1:
+        posx = ops[i+1]
+        posy = ops[i+2]
+        posz = ops[i+3]
+        print(posx,posy,posz)
+        ops[posz] = ops[posx] + ops[posy]
+        i += 4
+    elif ops[i] == 2:
+        posx = ops[i+1]
+        posy = ops[i+2]
+        posz = ops[i+3]
+        ops[posz] = ops[posx] * ops[posy]
+        i += 4
+    elif ops[i] == 99:
+        break
+    print(ops)
+    
+print(ops)

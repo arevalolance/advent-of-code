@@ -1,0 +1,20 @@
+import fileinput
+
+def solve(input):
+    floor = 0
+    pos = 0
+    for char in input:
+        if floor == -1:
+            return pos
+        if char == '(':
+            floor += 1
+        elif char == ')':
+            floor -= 1
+        pos += 1
+
+ans = 0
+for line in fileinput.input():
+    data = line.strip()
+    ans += solve(data)
+
+print(ans)

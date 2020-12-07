@@ -1,0 +1,9 @@
+import fileinput
+
+lines = list(fileinput.input())
+#lines.append('')
+
+for line in lines:
+    line = line.strip()
+    k = line.split('\"')
+    print(k)
